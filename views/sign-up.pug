@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1 Sign-Up 
+  form(method="POST" action='')
+     div.form-group
+        label(for='firstname') First name:
+        input#firstname(type='text',placeholder='your first name', name='firstname',required='true')
+     div.form-group
+        label(for='lastname') Last name:
+        input#lastname(type='text',placeholder='your last name', name='lastname',required='true')
+     div.form-group
+        label(for='username') Username:
+        input#username(type='text',placeholder='your account username', name='username',required='true')
+     div.form-group
+        label(for='password') Password:
+        input#password(type='password',placeholder='password', name='password',required='true')
+     button.btn#submit-signup(type='submite') Make Account
