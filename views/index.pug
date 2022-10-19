@@ -3,7 +3,7 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  if currentUser
-    p Hello #{currentUser.username}
+  if !currentUser
+    p Hello guest
   else 
-    p Hello World
+    p Hello  #{currentUser.username}

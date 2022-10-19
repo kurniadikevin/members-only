@@ -8,8 +8,6 @@ const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var signUpRouter = require('./routes/sign-up');
 var logInRouter = require('./routes/log-in');
 
@@ -37,13 +35,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/sign-up',signUpRouter);
 app.use('/log-in',logInRouter);
-
-
 
  //PASSPORT FUNCTION 
 //Function one : setting up the LocalStrategy from passport for session login
@@ -80,6 +73,19 @@ app.use(express.urlencoded({ extended: false }));
 
 /// 
 
+// using local .env to assign user globally on app 
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;// current user can be used in view as in index.ejs
+  next();
+});
+
+// this section assign after passport use to get info from local
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
+
 
 
 // sign up post new user and hashing password then redirect to index
@@ -115,6 +121,7 @@ app.post(
     failureRedirect: "/sign-up"
   })
 );
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

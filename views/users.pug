@@ -2,4 +2,9 @@ extends layout
 
 block content
   h1=  title
+  if !currentUser
+    p Guest profile
+  else 
+    p #{currentUser.username} profile 
+    p #{currentUser.membership_status}
   
