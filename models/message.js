@@ -6,7 +6,7 @@ const MessageSchema = new Schema({
     title : {type: String, required: true},
     text : {type: String, required: true},
     user : { type : Schema.Types.ObjectId, ref : "User"},
-    timeStamp : new Date()
+    timeStamp :  { type: Date, default: Date.now }
 });
 
 //virtual message url
