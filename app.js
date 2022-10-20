@@ -157,24 +157,27 @@ app.post('/clubs',(req,res,next)=>{
 // message-form POST
 app.post("/message-form", (req, res, next) => {
  
-    // if err, do something
-    if(err){
-      return next('Failed to public message');
-    }
-    
     const message = new Message({
-      title : req.body.title,
+       title : req.body.title,
       text : req.body.text,
       user : res.locals.currentUser,
-      timeStamp : 'time'
     })
-    Message.save(err => {
+    message.save(err => {
       if (err) { 
         return next(err);
       }
       res.redirect("/");
     });
-  
+});
+
+// log out function
+app.get("/log-out", (req, res, next) => {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
 });
 
 

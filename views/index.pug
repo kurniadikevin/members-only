@@ -2,9 +2,30 @@ extends layout
 
 block content
   .main
-    h1= title
-    p Welcome to #{title}
-    if !currentUser
-      p Hello guest
-    else 
-      p Hello  #{currentUser.username}
+      h1= title
+      if !currentUser
+        .messageList 
+            for msg in message_list
+              .messageCont  
+                h3 Hidden
+                p Sign-in to see the message
+                h3 #{msg.user.username} / #{msg.user.membership_status}
+                p #{msg.timeStamp}    
+                   
+      else 
+        .messageList 
+          for msg in message_list
+            if msg.user.membership_status === currentUser.membership_status
+              .messageCont  
+                h3 #{msg.title}
+                p #{msg.text}
+                h3 #{msg.user.username} / #{msg.user.membership_status}
+                p #{msg.timeStamp}
+                p #{currentUser.membership_status} #{msg.user.membership_status}
+            else 
+            .messageCont  
+                h3 Hidden
+                p Join this club to see the message
+                h3 #{msg.user.username} / #{msg.user.membership_status}
+                p #{msg.timeStamp}
+                p #{currentUser.membership_status} #{msg.user.membership_status}

@@ -1,11 +1,20 @@
 var express = require('express');
 var router = express.Router();
-var app = express();
+var Message = require('../models/message');
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Members Only Board'});
+router.get('/', (req, res,next) => {
+  Message.find({}, "")
+  .sort({ timeStamp: -1 })
+  .populate("user")
+  .exec(function (err, list_message) {
+    if (err) {
+      return next(err);
+    }
+    //Successful, so render
+    res.render("index", { title: "Member Only", message_list: list_message });
+  });
 });
 
 module.exports = router;
