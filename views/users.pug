@@ -1,10 +1,14 @@
 extends layout
 
 block content
-  h1=  title
-  if !currentUser
-    p Guest profile
-  else 
-    p #{currentUser.username} profile 
-    p #{currentUser.membership_status}
-  
+  .main 
+    h1=  title
+    if !currentUser
+      p Guest profile
+    else
+      div.profile-cont 
+        div First name : #{currentUser.first_name}
+        div Last name : #{currentUser.last_name}
+        div Username : #{currentUser.username}
+        div Status : #{currentUser.membership_status}
+    

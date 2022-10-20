@@ -70,10 +70,9 @@ app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
-
 /// 
 
-// using local .env to assign user globally on app 
+// using local to assign user globally on app 
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;// current user can be used in view as in index.ejs
   next();
@@ -82,10 +81,12 @@ app.use(function(req, res, next) {
 // this section assign after passport use to get info from local
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var clubsRouter = require('./routes/clubs');
+var messageFormRouter = require('./routes/message-form');
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
-
+app.use('/clubs', clubsRouter); 
+app.use('/message-form', messageFormRouter);
 
 
 // sign up post new user and hashing password then redirect to index
@@ -122,6 +123,61 @@ app.post(
   })
 );
 
+//join club POST
+app.post('/clubs',(req,res,next)=>{
+     
+    if(req.body.password === 'whitecode'){
+
+     //update user info
+    const user = new User({
+      first_name : res.locals.currentUser.first_name,
+      last_name :res.locals.currentUser.last_name,
+      username: res.locals.currentUser.username,
+      password: res.locals.currentUser.password,
+      membership_status : 'whitelist',
+      _id : res.locals.currentUser._id //using same id for updating
+    })
+
+   /*  Product.findByIdAndUpdate(req.params.id, product, {}, (err, product) => { */
+    User.findByIdAndUpdate(res.locals.currentUser._id, user, {}, (err,user) =>{
+      if (err) {
+        return next(err);
+      }
+      // Successful: redirect to new user profile
+      res.redirect('/');
+    });
+    
+  
+    } else{
+      console.log('wrong password')
+      res.redirect('/clubs');
+    }
+})
+
+// message-form POST
+app.post("/message-form", (req, res, next) => {
+ 
+    // if err, do something
+    if(err){
+      return next('Failed to public message');
+    }
+    
+    const message = new Message({
+      title : req.body.title,
+      text : req.body.text,
+      user : res.locals.currentUser,
+      timeStamp : 'time'
+    })
+    Message.save(err => {
+      if (err) { 
+        return next(err);
+      }
+      res.redirect("/");
+    });
+  
+});
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -140,6 +196,3 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
-
-
-// user log in but can't fetch the user info
