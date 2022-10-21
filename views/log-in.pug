@@ -1,12 +1,13 @@
 extends layout
 
 block content
-  h1 Log-in
-  form(method="POST" action='/log-in')
-     div.form-group
-        label(for='username') Username:
-        input#username(type='text',placeholder='your account username', name='username',required='true')
-     div.form-group
-        label(for='password') Password:
-        input#password(type='password',placeholder='password', name='password',required='true')
-     button.btn#submit-login(type='submit') Log in account
+   .main
+      h1 Log-in
+      form(method="POST" action='/log-in')
+         div.form-group
+            label(for='username') Username:
+            input#username(type='text',placeholder='your account username', name='username',required='true')
+         div.form-group
+            label(for='password') Password:
+            input#password(type='password',placeholder='password', name='password',required='true')
+         button.btn#submit-login(type='submit') Log in

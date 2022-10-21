@@ -16,13 +16,106 @@ body{
   min-width: 200px;
 }
 
+button{
+  background-color: gray;
+  color: white;
+}
+
+.main{
+  background-color: rgb(55,55,55);
+  padding: 20px 30px 40px 30px;
+  width: 400px;
+}
+#main-id{
+  background-color: rgb(55,55,55);
+  padding: 20px 30px 40px 30px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+ 
+}
+  .profile-cont, .clubs-cont{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .club-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 150px;
+  }
+
 .dashboard{
   padding-bottom: 50px;
+  
+}
+.dashboard>a>button{
+  background-color: gray;
+  color: white;
+  padding: 5px 10px;
+  font-size: 10pt;
+}
+
+.currentUsername{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.index-title{
+  padding-bottom: 10px;
 }
 
 .messageList{
 
 }
   .messageCont{
-    padding-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(85,85,85);
+    width: 400px;
+  }
+  .title{
+    padding-top: 20px;
+    padding-bottom:10px ;
+    font-size: 13pt;
+    font-weight: 800;
+  }
+  .text{
+    padding-bottom:15px ;
+  }
+  .username{
+    padding-bottom: 5px;
+  }
+  .status{
+    padding-bottom: 10px;
+  }
+  #timeStamp{
+    font-size: 8pt;
+  }
+
+/* new message */
+.form-group{
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+  #titleInput{
+    
+  }
+
+  #textInput{
+    resize: none;
+  }
+
+  .button-cont{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 80px;
+  }
+  #submit-post{
+   background-color: gray;
+   color: white;
   }

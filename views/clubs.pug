@@ -1,16 +1,17 @@
 extends layout
 
 block content
-  .main
+  div#main-id
     h1= clubName
-    h2= title
+    
     p Welcome to #{clubName}
     if !currentUser
       p Sign in first to join Club.
     else 
-      p Hello  #{currentUser.username}
+      .clubs-cont
+      div Hello  #{currentUser.username}
       p Current password : whitecode
-      form(action="", method="POST")
+      form.club-form(action="", method="POST")
         label(for="password") Password
         input(type="password" name='password' required='true')
        

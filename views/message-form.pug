@@ -1,15 +1,16 @@
 extends layout
 
 block content
-  h1 #{title}
-  if !currentUser
-      p Cannot post message as a guest
-  else 
-   form(method="POST" action='')
-      div.form-group
-         label(for='title') Title:
-         input#title(type='text',placeholder='message title', name='title',required='true')
-      div.form-group
-         label(for='text') Body:
-         textarea#text(rows='5' cols='20',placeholder='main message text', name='text',required='true')
-      button.btn#submit-login(type='submit') Post
+  .main
+   if !currentUser
+         p Cannot post message as a guest
+   else 
+      form(method="POST" action='')
+         div.form-group
+            label(for='title') Title
+            input#titleInput(type='text',placeholder='message title', name='title',required='true')
+         div.form-group
+            label(for='text') Text
+            textarea#textInput(rows='10' cols='30',placeholder='main message text', name='text',required='true')
+         div.button-cont
+            button.btn#submit-post(type='submit') Post

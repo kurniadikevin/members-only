@@ -2,30 +2,32 @@ extends layout
 
 block content
   .main
-      h1= title
+      h2.index-title Home
       if !currentUser
         .messageList 
             for msg in message_list
               .messageCont  
-                h3 Hidden
-                p Sign-in to see the message
-                h3 #{msg.user.username} / #{msg.user.membership_status}
-                p #{msg.timeStamp}    
+                div.title Hidden
+                div.text Sign-in to see the message
+                div.username #{msg.user.username} 
+                div.status #{msg.user.membership_status}
+                div#timeStamp #{msg.timeStamp}    
                    
       else 
         .messageList 
           for msg in message_list
-            if msg.user.membership_status === currentUser.membership_status
+            if msg.user.membership_status === currentUser.membership_status || msg.user.membership_status == 'new user'
               .messageCont  
-                h3 #{msg.title}
-                p #{msg.text}
-                h3 #{msg.user.username} / #{msg.user.membership_status}
-                p #{msg.timeStamp}
-                p #{currentUser.membership_status} #{msg.user.membership_status}
-            else 
-            .messageCont  
-                h3 Hidden
-                p Join this club to see the message
-                h3 #{msg.user.username} / #{msg.user.membership_status}
-                p #{msg.timeStamp}
-                p #{currentUser.membership_status} #{msg.user.membership_status}
+                div.title #{msg.title}
+                div.text #{msg.text}
+                div.username #{msg.user.username}  
+                div.status #{msg.user.membership_status}
+                div#timeStamp #{msg.timeStamp}
+                
+            else
+              .messageCont  
+                div.title Hidden
+                div.text Join the club to see message
+                div.username #{msg.user.username}  
+                div.status #{msg.user.membership_status}
+                div#timeStamp #{msg.timeStamp}  
