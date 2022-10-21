@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  .main
+    .messageCont  
+       h2 Delete this message
+       div.title #{msg.title}
+       div.text #{msg.text}
+       div.username #{msg.user.username}  
+       div.status #{msg.user.membership_status}
+       div#timeStamp #{msg.timeStamp}
+       form(action="", method="post") 
+        button(type='submit') Delete

@@ -23,6 +23,9 @@ block content
                 div.username #{msg.user.username}  
                 div.status #{msg.user.membership_status}
                 div#timeStamp #{msg.timeStamp}
+                if currentUser.admin 
+                  a(href=`message/${msg._id}/delete`)
+                    button#deleteMessageBtn Delete
                 
             else
               .messageCont  

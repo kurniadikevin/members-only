@@ -17,9 +17,4 @@ router.get('/', (req, res,next) => {
   });
 });
 
-/* DELETE home page */
-/* router.get('/delete_msg',(req,res,next)=>{
-
-}) */
-
 module.exports = router;

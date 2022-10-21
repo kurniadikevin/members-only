@@ -83,10 +83,12 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var clubsRouter = require('./routes/clubs');
 var messageFormRouter = require('./routes/message-form');
+var deleteMessageRouter = require('./routes/delete_message')
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/clubs', clubsRouter); 
 app.use('/message-form', messageFormRouter);
+app.use('/', deleteMessageRouter);
 
 
 // sign up post new user and hashing password then redirect to index
@@ -203,7 +205,6 @@ app.get("/log-out", (req, res, next) => {
     res.redirect("/");
   });
 });
-
 
 
 // catch 404 and forward to error handler
