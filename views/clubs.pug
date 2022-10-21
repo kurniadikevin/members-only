@@ -16,4 +16,20 @@ block content
         input(type="password" name='password' required='true')
        
         button(type='submit') Join Club
+  div#main-id
+    h1 Admin club
+    
+    p Welcome to Admin club
+    if !currentUser
+      p Sign in first to join Club.
+    else 
+      .clubs-cont
+      div Hello  #{currentUser.username}
+      p Current password : bethgaga
+      form.club-form(action="/admin", method="POST")
+        label(for="adminpassword") Password
+        input(type="password" name='adminpassword' required='true')
+       
+        button(type='submit') Join Club
+      
 

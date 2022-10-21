@@ -11,4 +11,6 @@ block content
         div #[strong Last name] : #{currentUser.last_name}
         div #[strong Username] : #{currentUser.username}
         div #[strong Club] : #{currentUser.membership_status}
+        if currentUser.admin 
+          div admin
     

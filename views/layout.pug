@@ -26,8 +26,9 @@ html
           button Sign up 
         a(href="/log-in")
           button Log in 
-        a(href="/log-out")
-          button Log out 
+        if currentUser
+          a(href="/log-out")
+            button Log out 
       
 
     block content

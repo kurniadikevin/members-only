@@ -124,10 +124,8 @@ app.post(
 );
 
 //join club POST
-app.post('/clubs',(req,res,next)=>{
-     
+app.post('/clubs',(req,res,next)=>{ 
     if(req.body.password === 'whitecode'){
-
      //update user info
     const user = new User({
       first_name : res.locals.currentUser.first_name,
@@ -135,9 +133,9 @@ app.post('/clubs',(req,res,next)=>{
       username: res.locals.currentUser.username,
       password: res.locals.currentUser.password,
       membership_status : 'whitelist',
-      _id : res.locals.currentUser._id //using same id for updating
+      _id : res.locals.currentUser._id, //using same id for updating
+      
     })
-
    /*  Product.findByIdAndUpdate(req.params.id, product, {}, (err, product) => { */
     User.findByIdAndUpdate(res.locals.currentUser._id, user, {}, (err,user) =>{
       if (err) {
@@ -146,12 +144,38 @@ app.post('/clubs',(req,res,next)=>{
       // Successful: redirect to new user profile
       res.redirect('/');
     });
-    
-  
     } else{
       console.log('wrong password')
       res.redirect('/clubs');
     }
+})
+
+//join adminn POST
+app.post('/admin',(req,res,next)=>{   
+  if(req.body.adminpassword === 'bethgaga'){
+   //update user info
+  const user = new User({
+    first_name : res.locals.currentUser.first_name,
+    last_name :res.locals.currentUser.last_name,
+    username: res.locals.currentUser.username,
+    password: res.locals.currentUser.password,
+    membership_status : res.locals.currentUser.membership_status,
+    admin : true,
+    _id : res.locals.currentUser._id, //using same id for updating
+    
+  })
+ /*  Product.findByIdAndUpdate(req.params.id, product, {}, (err, product) => { */
+  User.findByIdAndUpdate(res.locals.currentUser._id, user, {}, (err,user) =>{
+    if (err) {
+      return next(err);
+    }
+    // Successful: redirect to new user profile
+    res.redirect('/');
+  });
+  } else{
+    console.log('wrong password')
+    res.redirect('/clubs');
+  }
 })
 
 // message-form POST

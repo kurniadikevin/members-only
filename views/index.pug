@@ -7,16 +7,16 @@ block content
         .messageList 
             for msg in message_list
               .messageCont  
-                div.title Hidden
-                div.text Sign-in to see the message
-                div.username #{msg.user.username} 
+                div.title #{msg.title}
+                div.text #{msg.text}
+                div.username Anon
                 div.status #{msg.user.membership_status}
-                div#timeStamp #{msg.timeStamp}    
+                div#timeStamp Hidden time    
                    
       else 
         .messageList 
           for msg in message_list
-            if msg.user.membership_status === currentUser.membership_status || msg.user.membership_status == 'new user'
+            if msg.user.membership_status === currentUser.membership_status || msg.user.membership_status == 'new user' || currentUser.admin 
               .messageCont  
                 div.title #{msg.title}
                 div.text #{msg.text}
@@ -26,8 +26,8 @@ block content
                 
             else
               .messageCont  
-                div.title Hidden
-                div.text Join the club to see message
-                div.username #{msg.user.username}  
+                div.title #{msg.title}
+                div.text #{msg.text}
+                div.username Anon 
                 div.status #{msg.user.membership_status}
-                div#timeStamp #{msg.timeStamp}  
+                div#timeStamp Hidden time  
