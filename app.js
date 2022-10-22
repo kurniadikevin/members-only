@@ -1,5 +1,7 @@
 var createError = require('http-errors');
 var express = require('express');
+const compression = require("compression");
+const helmet = require("helmet");
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -16,6 +18,8 @@ const Message = require("./models/message");
 const User = require('./models/user');
 
 var app = express();
+app.use(compression()); // Compress all routes
+app.use(helmet());
 
 //set up mongodb connection with mongoose
 const mongoose = require("mongoose");
