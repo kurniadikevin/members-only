@@ -24,6 +24,7 @@ body{
   min-width: 200px;
 }
 
+
 button{
   background-color: gray;
   color: white;
@@ -148,11 +149,9 @@ button{
   padding-left: 20px;
 }
 
-/* @media(min-width: 600px) {
-  body {
-   padding: 10px;
+@media(max-width: 600px) {
+  body{
+   padding-left: 10px;
+   padding-right: 10px;
   }
-  main{
-    min-width: 500px;
-  }
-} */
+}
