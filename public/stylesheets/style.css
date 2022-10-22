@@ -156,7 +156,10 @@ button{
 
 @media(max-width: 600px) {
   body{
-   padding-left: 10px;
-   padding-right: 10px;
+  font-size: 14pt;
+  padding: 10px;
+  }
+  .main{
+    min-width: 200px;
   }
 }
