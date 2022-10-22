@@ -150,6 +150,10 @@ button{
   padding-left: 20px;
 }
 
+#deleteMsg{
+  margin-top: 10px;
+}
+
 @media(max-width: 600px) {
   body{
    padding-left: 10px;
