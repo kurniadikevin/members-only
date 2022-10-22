@@ -5,6 +5,7 @@ block content
    if !currentUser
          p Cannot post message as a guest
    else 
+      h2#newMessage-title New Message
       form(method="POST" action='')
          div.form-group
             label(for='title') Title

@@ -4,31 +4,33 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
-    h1= title
-    div.layout-cont
-      div.currentUsername
-        if !currentUser
-          p  Guest
-        else 
-          p  #{currentUser.username}
+    div.layout
+      div.layout-title
+        h1 Members Only
+      div.layout-cont
+        div.currentUsername
+          if !currentUser
+            p  Guest
+          else 
+            p  #{currentUser.username}
+          
+        div.dashboard
+          a(href="/")
+            button Home 
+          a(href="/users")
+            button Profile
+          if currentUser
+            a(href="/message-form")
+              button#newmessage New Post
+          a(href="/clubs")
+            button Clubs   
+          a(href="/sign-up")
+            button Sign up 
+          a(href="/log-in")
+            button Log in 
+          if currentUser
+            a(href="/log-out")
+              button Log out 
         
-      div.dashboard
-        a(href="/")
-          button Home 
-        a(href="/users")
-          button Profile
-        if currentUser
-          a(href="/message-form")
-            button#newmessage New Post
-        a(href="/clubs")
-          button Clubs   
-        a(href="/sign-up")
-          button Sign up 
-        a(href="/log-in")
-          button Log in 
-        if currentUser
-          a(href="/log-out")
-            button Log out 
-      
 
     block content
