@@ -10,11 +10,12 @@ a {
 }
 
   .layout{
-    
+    padding-bottom: 60px;
   }
   .layout-title{
     display: flex;
     justify-content: center;
+    
   }
 
 body{
@@ -35,7 +36,7 @@ button{
   background-color: rgb(55,55,55);
   padding: 20px 30px 40px 30px;
   width: 400px;
-  margin-top: 60px;
+  
 }
 #main-id{
   background-color: rgb(55,55,55);
