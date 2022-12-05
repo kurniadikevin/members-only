@@ -6,7 +6,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const  bcrypt = require('bcryptjs');
-const session = require("express-session");
+const session = require('cookie-session');
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
