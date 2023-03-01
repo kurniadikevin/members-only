@@ -5,8 +5,8 @@ const helmet = require("helmet");
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const  bcrypt = require('bcryptjs');
-const session = require('cookie-session');
+const bcrypt = require('bcryptjs');
+const session = require('express-session');
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
@@ -18,7 +18,8 @@ const Message = require("./models/message");
 const User = require('./models/user');
 
 var app = express();
-app.use(compression()); // Compress all routes
+// Compress all routes
+app.use(compression()); 
 app.use(helmet());
 
 //set up mongodb connection with mongoose
@@ -69,7 +70,7 @@ passport.deserializeUser(function(id, done) {
   User.findById(id, function(err, user) {
     done(err, user);
   });
-});
+}); 
 
 app.use(session({ secret: "cats", resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
